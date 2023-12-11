@@ -5,9 +5,14 @@
  * @size:size of cmd
  * Return:inputs
  */
-void rd_cmd(char *cmd, size_t size)
+void rd_cmd(void)
 {
-	if (fgets(cmd , size , stdin) == NULL)
+	char *cmd = NULL;
+	size_t size = 0;
+	ssize_t brt;
+
+	brt = getline(&cmd , &size , stdin);
+	if (brt == -1)
 	{
 		if (feof(stdin))
 		{
@@ -19,5 +24,10 @@ void rd_cmd(char *cmd, size_t size)
 			n_print("Error input\n");
 			exit(EXIT_FAILURE);
 		}
+		free(cmd);
 	}
+	cmd[strcspn(cmd, "\n")] = '\0';
+
+/*	if (cmd[brt - 1] == "\n")
+		cmd[brt - 1] = "\0";*/
 }

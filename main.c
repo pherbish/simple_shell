@@ -12,7 +12,7 @@ int main(void)
     {
 	    exe_cmd(cmd);
 	    t_prmpt();
-	    rd_cmd(cmd, sizeof(cmd));
+	    rd_cmd();
     }
     return 0;
 }

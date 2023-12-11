@@ -5,5 +5,5 @@
  */
 void t_prmpt(void)
 {
-	n_print("root/user$:");
+	n_print("#cisfun$");
 }

@@ -6,13 +6,14 @@
 
 int main(void) 
 {
-    char cmd[128];
+    char *cmd = NULL;
 
     while (true)
     {
 	    exe_cmd(cmd);
 	    t_prmpt();
-	    rd_cmd();
+	    rd_cmd(&cmd);
     }
+    free(cmd);
     return 0;
 }

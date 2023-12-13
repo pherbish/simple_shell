@@ -7,10 +7,11 @@
 int main(void) 
 {
     char *cmd = NULL;
+    char *envrn[128];
 
     while (true)
     {
-	    exe_cmd(cmd);
+	    exe_cmd(cmd,envrn);
 	    t_prmpt();
 	    rd_cmd(&cmd);
     }

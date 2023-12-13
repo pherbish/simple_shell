@@ -43,7 +43,7 @@ char *find_command(const char *cmd)
  * @cmd:pointer to the commands
  * Returns:executed command
  */
-void exe_cmd(const char *cmd)
+void exe_cmd(const char *cmd, char *envrn[])
 {
 	pid_t chld = fork();
 
@@ -65,9 +65,22 @@ void exe_cmd(const char *cmd)
 		}
 		args[arg_count] = NULL;
 		if (strcmp(args[0], "exit") == 0)
-                {
+                { 
                         exit(EXIT_SUCCESS);
                 }
+
+		if (strcmp(args[0], "env") == 0)
+		{
+			/* Print the environment variables*/
+			/*char **env_var = envrn;*/
+			int i;
+			for (i = 0; envrn[i] != NULL; i++)
+			{
+				n_print(envrn[i]);
+				n_print("\n");
+			}
+			exit(EXIT_SUCCESS);
+		}
 		/* If the command is an absolute path or starts with './' or '../', execute it directly*/
 		if (strchr(args[0], '/') != NULL || strncmp(args[0], "./", 2) == 0 || strncmp(args[0], "../", 3) == 0) 
 		{

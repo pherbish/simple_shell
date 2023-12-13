@@ -12,4 +12,5 @@ void t_prmpt(void);
 void rd_cmd( char **cmd);
 void exe_cmd(const char *cmd);
 int main(void);
+char *find_command(const char *cmd);
 #endif/*SHELL_H*/
